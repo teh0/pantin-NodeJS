@@ -72,16 +72,15 @@ Pour établir une connexion Websocket entre le front et le serveur, il suffit de
 - **Le Serveur Node**
 
   Nous avons utilisez les dépendances suivantes :
-  - [Express]() pour le routing de notre serveur
-  - [socket.io]() pour la communication en websocket
-  - [johnny-five]() pour commander l'Arduino et l'Arduino Shield
+  - [Express](https://expressjs.com/fr/) pour le routing de notre serveur
+  - [socket.io](https://socket.io/) pour la communication en websocket
+  - [johnny-five](http://johnny-five.io/) pour commander l'Arduino et l'Arduino Shield
   
   Pour assurer la connexion WebSocket côté serveur, il suffit d'ajouter la ligne suivante
   ```
   let socket = io.connect('http://127.0.0.1:4000')
   ```
-  
+  Pour l'utilisation de johnny-five, je vous laisse le soin de lire leur documentation.
+Pour le fonctionnement côté serveur, on se contente juste de lire le message envoyer par le client et on execute des methode de johnny-five pour piloter la carte Arduino. 
   ## Le mot de la fin
   Ce projet est toujours en cours d'amélioration car nous n'avons pas pu le finir dans les temps. Nous nous assurerons d etenir à jour la documentation au fur et à mesure de l'avancée du projet.
-  
-  Merci d'avoir lu jusqu'au bout
