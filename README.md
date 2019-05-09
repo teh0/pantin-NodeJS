@@ -31,7 +31,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   <button id="btn-rvs">Reverse</button>
   <button id="btn-stop">Stop</button>
   ```
-  Chacun de ses boutons sont liés à un évènement ```click``` en Javascript et le déclenchement de ces événements entraînent l'**envoi d'un message Websocket** :
+  Chacun de ces boutons est lié à un évènement ```click``` en Javascript et le déclenchement de ces événements entraînent l'**envoi d'un message Websocket** :
   
    ```js
    let clickBtnRvs = () => {
@@ -71,7 +71,7 @@ Pour établir une connexion Websocket entre le Front et le serveur, il suffit de
 
 - **Le Serveur Node**
 
-  Nous avons utilisez les dépendances suivantes :
+  Nous avons utilisé les dépendances suivantes :
   - [Express](https://expressjs.com/fr/) pour le routing de notre serveur
   - [socket.io](https://socket.io/) pour la communication en Websocket
   - [johnny-five](http://johnny-five.io/) pour commander l'Arduino et l'Arduino Shield
@@ -85,4 +85,4 @@ Pour le fonctionnement côté serveur, on traite le message envoyé par le clien
 
 
   ## Le mot de la fin
-  Ce projet est toujours en cours d'amélioration car nous n'avons pas pu le finir dans les temps. Nous nous assurerons de tenir à jour la documentation au fûr et à mesure de l'avancée du projet.
+  Ce projet est toujours en cours d'amélioration car nous n'avons pas pu le finir dans les temps. Nous nous assurerons de tenir à jour la documentation au fur et à mesure de l'avancée du projet.
