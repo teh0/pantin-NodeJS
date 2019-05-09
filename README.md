@@ -3,7 +3,7 @@
 C'est un projet expérimental destiné à une exposition qui s'appelle "Articulation". Organisée par l'université Savoie Mont Blanc, elle réunit le travail d'étudiants de chaque formation présente sur le campus.
 
 ## Fonctionnement du projet
-Nous voulions manipuler un pantin à distance sans utiliser de manette. Seulement avec le mouvement des deux mains. 
+Nous voulions manipuler un pantin à distance sans utiliser de manette (seulement avec le mouvement des deux mains). 
 Pour se faire, nous avons eu besoin d'une [LeapMotion](https://www.leapmotion.com/), d'une carte [Arduino R3](https://fr.wikipedia.org/wiki/Arduino) d'une [Adafruit MotorShield](https://learn.adafruit.com/adafruit-motor-shield/overview) afin de piloter les moteurs reliés au pantin.
 
 ## Détails Techniques
@@ -31,7 +31,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   <button id="btn-rvs">Reverse</button>
   <button id="btn-stop">Stop</button>
   ```
-  Chacun de ses boutons sont liés à un évènement ```click``` en Javascript et le déclenchement de cet évènement entraînera l'envoi d'un message Websocket :
+  Chacun de ses boutons sont liés à un évènement ```click``` en Javascript et le déclenchement de ces événements entraînent l'**envoi d'un message Websocket** :
   
    ```js
    let clickBtnRvs = () => {
@@ -48,7 +48,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   ```
   **Comment déclencher le click des boutons ?**
   
-  Dans le fichier ```remote.js``` en front, en récupère les données de la Leapmotion en utilisant la boucle de la Class ```Leap```. C'est une sorte de thread qui va s'actualiser à chaque nouvelle Frame captée par la LeapMotion.
+  Dans le fichier ```remote.js``` en front, on récupère les données de la Leapmotion en utilisant la boucle de la Class ```Leap```. C'est une sorte de thread qui va s'actualiser à chaque nouvelle Frame captée par la LeapMotion.
   ```js
   Leap.loop(function (frame) {
    /*mes conditions*/
@@ -63,7 +63,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   ```
 
   Le message est donc envoyé au serveur NodeJS qui va se charger de piloter la carte Arduino.
-Pour établir une connexion Websocket entre le front et le serveur, il suffit de renseigner l'adresse du serveur
+Pour établir une connexion Websocket entre le Front et le serveur, il suffit de renseigner l'adresse du serveur
   ```js
   let socket = io.connect('http://127.0.0.1:4000')
   ```
@@ -80,8 +80,9 @@ Pour établir une connexion Websocket entre le front et le serveur, il suffit de
   ```js
   let socket = io.connect('http://127.0.0.1:4000')
   ```
-  Pour l'utilisation de johnny-five, je vous laisse le soin de lire leur documentation.
-Pour le fonctionnement côté serveur, on traite le message envoyé par le client et on exécute des methode de johnny-five pour piloter la carte Arduino. 
+  Pour l'utilisation de johnny-five, je vous laisse le soin de lire la documentation.
+Pour le fonctionnement côté serveur, on traite le message envoyé par le client et on exécute des methodes de johnny-five pour piloter la carte Arduino. 
+
 
   ## Le mot de la fin
   Ce projet est toujours en cours d'amélioration car nous n'avons pas pu le finir dans les temps. Nous nous assurerons de tenir à jour la documentation au fûr et à mesure de l'avancée du projet.
