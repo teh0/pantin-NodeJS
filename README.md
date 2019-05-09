@@ -18,7 +18,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
 - **Le Client Web**
 
   **Dépendances utilisée**
-  ```
+  ```js
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leapjs/0.6.1/leap.min.js"></script>
@@ -26,14 +26,14 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   
   La partie principale du front repose sur l'utilisation de 3 boutons :
   
-  ```
+  ```js
   <button id="btn-fwd">Forward</button>
   <button id="btn-rvs">Reverse</button>
   <button id="btn-stop">Stop</button>
   ```
   Chacun de ses boutons sont liés à un évènement ```click``` en Javascript et le déclenchement de cet évènement entraînera l'envoi d'un message Websocket :
   
-   ```
+   ```js
    let clickBtnRvs = () => {
      $('button#btn-rvs').click(() => {
         if (!lockRvs) {
@@ -49,13 +49,13 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
   **Comment déclencher le click des boutons ?**
   
   Dans le fichier ```remote.js``` en front, en récupère les données de la Leapmotion en utilisant la boucle de la Class ```Leap```. C'est une sorte de thread qui va s'actualiser à chaque nouvelle Frame captée par la LeapMotion.
-  ```
+  ```js
   Leap.loop(function (frame) {
    /*mes conditions*/
   });
   ```
   La variable ```frame``` est l'objet qui contient toutes les positions des mains. On peut donc faire des conditions dessus afin de déclencher des événements particuliers.
-  ```
+  ```js
   let type = frame.hands[0].type;
   if (type == 'right' && y_hand > min_height) {
       $('button#btn-fwd').trigger("click");
@@ -64,7 +64,7 @@ Pour ce projet, nous nous sommes contentés de mettre le Client et le Serveur su
 
   Le message est donc envoyé au serveur NodeJS qui va se charger de piloter la carte Arduino.
 Pour établir une connexion Websocket entre le front et le serveur, il suffit de renseigner l'adresse du serveur
-  ```
+  ```js
   let socket = io.connect('http://127.0.0.1:4000')
   ```
   
@@ -77,7 +77,7 @@ Pour établir une connexion Websocket entre le front et le serveur, il suffit de
   - [johnny-five](http://johnny-five.io/) pour commander l'Arduino et l'Arduino Shield
   
   Pour assurer la connexion WebSocket côté serveur, il suffit d'ajouter la ligne suivante
-  ```
+  ```js
   let socket = io.connect('http://127.0.0.1:4000')
   ```
   Pour l'utilisation de johnny-five, je vous laisse le soin de lire leur documentation.
